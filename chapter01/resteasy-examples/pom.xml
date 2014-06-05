@@ -38,6 +38,9 @@
 					<groupId>org.jboss.as.plugins</groupId>
 					<artifactId>jboss-as-maven-plugin</artifactId>
 					<version>7.3.Final</version>
+                                        <configuration>
+                                            <jbossHome>/Users/moe/Documents/Java/jboss-as-7.1.1.Final</jbossHome>
+                                        </configuration>
 				</plugin>
 
 				<plugin>
