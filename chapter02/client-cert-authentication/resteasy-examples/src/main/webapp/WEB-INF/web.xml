@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+        <!-- Roles -->
+	<security-role>
+		<description>Any rol </description>
+		<role-name>*</role-name>
+	</security-role>
+        
+        <!-- Resource / Role Mapping -->
+	<security-constraint>
+		<display-name>Area secured</display-name>
+		<web-resource-collection>
+			<web-resource-name>protected_resources</web-resource-name>
+			<url-pattern>/services/*</url-pattern>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<description>User with any role</description>
+			<role-name>*</role-name>
+		</auth-constraint>
+                <user-data-constraint>
+                    <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+		</user-data-constraint>
+	</security-constraint>
+
+
+	<login-config>
+		<auth-method>CLIENT-CERT</auth-method>
+	</login-config>
+</web-app>
