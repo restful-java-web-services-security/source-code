@@ -17,19 +17,28 @@ public class EncryptedServiceTest {
 
 	@Test
 	public void testEncryptedGet() throws Exception {
-		X509Certificate myX509Certificate = PemUtils.decodeCertificate(Thread
+		// LOADING THE CERTIFICATE
+		X509Certificate myX509Certificate = 							PemUtils.decodeCertificate(
+				Thread
 				.currentThread().getContextClassLoader()
 				.getResourceAsStream("democert.pem"));
+		// LOADING THE KEY
 		PrivateKey myPrivateKey = PemUtils.decodePrivateKey(Thread
 				.currentThread().getContextClassLoader()
 				.getResourceAsStream("demokey.pem"));
+		// CREATING A CLIENT FOR THE WEB SERVICE
 		Client client = new ResteasyClientBuilder().build();
-		WebTarget target = client
-				.target("http://localhost:8080/encryption-1.0/services/encrypted");
-		EnvelopedInput<?> input = target.request().get(EnvelopedInput.class);
+		WebTarget target = client								.target(
+      		"http://localhost:8080/encryption-1.0/services/encrypted"
+		);
+		// RETRIEVING THE RESULT OF METHOD EXECUTION
+		EnvelopedInput<?> input = 	target.request().
+						get(EnvelopedInput.class);
 		Assert.assertEquals("Hello world",
-				input.getEntity(String.class, myPrivateKey, myX509Certificate));
+				input.getEntity(String.class, 
+				myPrivateKey, myX509Certificate));
 		client.close();
+
 	}
 
 }
