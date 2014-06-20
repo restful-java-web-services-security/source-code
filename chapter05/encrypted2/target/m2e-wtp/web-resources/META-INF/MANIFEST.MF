@@ -1,7 +1,0 @@
-Manifest-Version: 1.0
-Built-By: moe
-Build-Jdk: 1.7.0_45
-Created-By: Maven Integration for Eclipse
-Dependencies: org.jboss.resteasy.resteasy-jaxb-provider export, org.jb
- oss.resteasy.resteasy-jaxrs export
-
